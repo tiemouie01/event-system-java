@@ -46,7 +46,10 @@ public class UserController {
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            user = session.find(User.class,username);
+            String hql = "FROM User u WHERE u.username = :username";
+            user = session.createQuery(hql, User.class)
+                    .setParameter("username", username)
+                    .uniqueResult();
             tx.commit();
         }catch (Exception e){
             if(tx != null) tx.rollback();

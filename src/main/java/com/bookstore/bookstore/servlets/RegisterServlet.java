@@ -24,7 +24,7 @@ public class RegisterServlet extends HttpServlet {
         req.getSession().setAttribute("userId", user.getId());
         req.getSession().setAttribute("username", username);
         req.getSession().setAttribute("role", role);
-        if (user.getRole().equals("admin")) {
+        if (user.getRole().equals("ADMIN")) {
             resp.sendRedirect("admin.jsp");
         } else {
             resp.sendRedirect("home.jsp");
