@@ -39,6 +39,22 @@ public class UserController {
         }
         return user;
     }
+
+    public User getUserByUsername(String username){
+        Transaction tx = null;
+        User user = null;
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            user = session.find(User.class,username);
+            tx.commit();
+        }catch (Exception e){
+            if(tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return user;
+    }
+
     public List<User> getUsers(){
         List<User> users = new ArrayList<>();
         Transaction tx = null;
