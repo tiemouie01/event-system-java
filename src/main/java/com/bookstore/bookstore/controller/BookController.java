@@ -27,7 +27,7 @@ public class BookController {
             e.printStackTrace();
         }
     }
-    public Book geBookrById(int id){
+    public Book geBookById(int id){
         Transaction tx = null;
         Book book = null;
         try{

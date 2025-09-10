@@ -24,6 +24,7 @@
 <body>
 <%
     String username = (String) session.getAttribute("username");
+    String role = (String) session.getAttribute("role");
     if (username == null) {
         response.sendRedirect("login.jsp");
     }
@@ -46,6 +47,7 @@
                 <th>Author</th>
                 <th>Price</th>
                 <th>Stock</th>
+                <th>Edit</th>
             </tr>
             </thead>
             <tbody>
@@ -58,6 +60,9 @@
                     <td><%= book.getAuthor() %></td>
                     <td>MWK<%= String.format("%.2f", book.getPrice()) %></td>
                     <td><%= book.getStock() %></td>
+                    <% if (role.equals("ADMIN")) {
+                        out.println("<>")
+                    }%>
                 </tr>
             <%
                 }
