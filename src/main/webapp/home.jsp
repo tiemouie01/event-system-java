@@ -12,6 +12,12 @@
 </head>
 <body>
 <div class="container">
+    <%
+        String username = (String) session.getAttribute("username");
+        if (username == null) {
+            response.sendRedirect("login.jsp");
+        }
+    %>
     <h1>Welcome to your Home</h1>
     <p>You are logged in as a regular user.</p>
     <a class="btn" href="${pageContext.request.contextPath}/index.jsp">Back to Home</a>

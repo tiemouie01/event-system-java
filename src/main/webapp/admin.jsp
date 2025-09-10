@@ -19,6 +19,19 @@
 </head>
 <body>
 <div class="container">
+    <%
+        String username = (String) session.getAttribute("username");
+        String role = (String) session.getAttribute("role");
+        if (username == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+
+        if (role == null || !role.equals("ADMIN")) {
+            response.sendRedirect("home.jsp");
+            return;
+        }
+    %>
     <h1>Welcome, Admin</h1>
     <p>You have administrative access.</p>
     <a class="btn" href="${pageContext.request.contextPath}/index.jsp">Back to Home</a>
