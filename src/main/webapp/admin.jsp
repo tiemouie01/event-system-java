@@ -35,6 +35,8 @@
     <h1>Welcome, Admin</h1>
     <p>You have administrative access.</p>
     <a class="btn" href="${pageContext.request.contextPath}/index.jsp">Back to Home</a>
+    <a class="btn" href="${pageContext.request.contextPath}/createBook.jsp">Create Book</a>
+    <a class="btn" href="/BookStore/books">View Books</a>
     <a class="btn" href="${pageContext.request.contextPath}/logout">Logout</a>
 </div>
 </body>

@@ -22,6 +22,12 @@
     </style>
     </head>
 <body>
+<%
+    String username = (String) session.getAttribute("username");
+    if (username == null) {
+        response.sendRedirect("login.jsp");
+    }
+%>
     <h1>Available Books</h1>
 
     <%
@@ -50,7 +56,7 @@
                     <td><%= book.getId() %></td>
                     <td><%= book.getTitle() %></td>
                     <td><%= book.getAuthor() %></td>
-                    <td>$<%= String.format("%.2f", book.getPrice()) %></td>
+                    <td>MWK<%= String.format("%.2f", book.getPrice()) %></td>
                     <td><%= book.getStock() %></td>
                 </tr>
             <%
