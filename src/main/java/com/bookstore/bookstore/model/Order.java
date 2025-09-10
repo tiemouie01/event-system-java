@@ -17,8 +17,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(int id, LocalDate orderDate, double totalAmount) {
-        this.id = id;
+    public Order(LocalDate orderDate, double totalAmount) {
         this.orderDate = orderDate;
         this.totalAmount = totalAmount;
     }
