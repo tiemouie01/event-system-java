@@ -15,6 +15,7 @@
     <h1>Welcome to your Home</h1>
     <p>You are logged in as a regular user.</p>
     <a class="btn" href="${pageContext.request.contextPath}/index.jsp">Back to Home</a>
+    <a class="btn" href="${pageContext.request.contextPath}/logout">Logout</a>
     </div>
 </body>
 </html>
