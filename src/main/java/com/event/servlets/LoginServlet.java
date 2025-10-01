@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
                 resp.sendRedirect("/admin");
             } else {
                 session.setAttribute("role", "USER");
-                resp.sendRedirect("home.jsp");
+                resp.sendRedirect("/home");
             }
         }
     }
