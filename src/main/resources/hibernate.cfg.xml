@@ -5,13 +5,13 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bookstore</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/event</property>
         <property name="hibernate.connection.username">timothymiamba</property>
         <property name="hibernate.connection.password">090500</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
         <mapping class="com.event.model.User" />
-        <mapping class="com.bookstore.bookstore.model.Book" />
-        <mapping class="com.bookstore.bookstore.model.Order" />
+        <mapping class="com.event.model.Event" />
+        <mapping class="com.event.model.Booking" />
     </session-factory>
 </hibernate-configuration>
