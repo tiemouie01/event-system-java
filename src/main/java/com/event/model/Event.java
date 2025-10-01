@@ -36,6 +36,15 @@ public class Event {
         this.availableSeats = availableSeats;
     }
 
+    public Event(Long id, String title, String description, LocalDate date, String location, int availableSeats) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.location = location;
+        this.availableSeats = availableSeats;
+    }
+
     public Long getId() {
         return id;
     }

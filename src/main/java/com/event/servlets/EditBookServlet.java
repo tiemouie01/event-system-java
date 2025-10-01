@@ -1,7 +1,7 @@
 package com.event.servlets;
 
-import com.event.controller.BookingController;
-import com.event.model.Booking;
+import com.event.controller.EventController;
+import com.event.model.Event;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,32 +10,34 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
-@WebServlet("/admin/book/*/edit")
+@WebServlet("/admin/events/edit")
 public class EditBookServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String pathInfo = req.getPathInfo();
-        Long id = Long.valueOf(pathInfo.substring(1));
-        BookingController bookController = new BookingController();
-        Booking book = bookController.geBookById(id.intValue());
+        int id =  Integer.parseInt(req.getParameter("id"));
+        EventController eventController = new EventController();
+        Event event = eventController.getEventById(id);
 
-        req.setAttribute("book", book);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("editBook.jsp");
-        requestDispatcher.forward(req,resp);
+        req.setAttribute("event", event);
+        RequestDispatcher rd = req.getRequestDispatcher("/edit-event.jsp");
+        rd.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Long id =  Long.parseLong(req.getParameter("id"));
         String title = req.getParameter("title");
-        String author = req.getParameter("author");
-        double price =   Double.parseDouble(req.getParameter("price"));
-        int stock =   Integer.parseInt(req.getParameter("stock"));
+        String description = req.getParameter("description");
+        LocalDate date = LocalDate.parse(req.getParameter("date"));
+        String location = req.getParameter("location");
+        int availableSeats =   Integer.parseInt(req.getParameter("available_seats"));
 
-        BookingController bookController = new BookingController();
-        Booking book = new Booking();
-        bookController.updateBooks(book);
+        EventController eventController = new EventController();
+        Event event = new Event(id, title, description, date, location, availableSeats);
+        eventController.updateEvent(event);
 
-        resp.sendRedirect("/BookStore/books");
+        resp.sendRedirect("/admin");
     }
 }

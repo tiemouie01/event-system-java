@@ -66,7 +66,12 @@
                 <td><%= event.getLocation() %></td>
                 <td><%= event.getAvailableSeats() %></td>
                 <td><%= event.getDate() %></td>
-                <td><button>Edit</button></td>
+                <td>
+                    <form action="/admin/events/edit" method="get">
+                        <input type="hidden" name="id" value="<%= event.getId() %>" />
+                        <button type="submit">Edit</button>
+                    </form>
+                </td>
                 <td><button>Delete</button></td>
             </tr>
             <%

@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("username", user.getUsername());
             if (user.getRole().equals("ADMIN")) {
                 session.setAttribute("role", "ADMIN");
-                resp.sendRedirect("admin.jsp");
+                resp.sendRedirect("/admin");
             } else {
                 session.setAttribute("role", "USER");
                 resp.sendRedirect("home.jsp");
