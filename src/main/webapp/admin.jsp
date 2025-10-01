@@ -72,7 +72,11 @@
                         <button type="submit">Edit</button>
                     </form>
                 </td>
-                <td><button>Delete</button></td>
+                <td>
+                    <form action="/admin/events/delete" method="post">
+                    <input type="hidden" name="id" value="<%= event.getId() %>" />
+                    <button type="submit">Delete</button>
+                </form></td>
             </tr>
             <%
                 }

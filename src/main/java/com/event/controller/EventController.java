@@ -66,4 +66,20 @@ public class EventController {
             e.printStackTrace();
         }
     }
+
+    public void deleteEvent(Long id){
+        Transaction tx = null;
+        Event event = null;
+
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            event = session.find(Event.class,id);
+            session.remove(event);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+    }
 }
