@@ -1,7 +1,7 @@
 package com.event.servlets;
 
-import com.event.controller.BookingController;
-import com.event.model.Booking;
+import com.event.controller.EventController;
+import com.event.model.Event;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 @WebServlet("/admin/events/create")
 public class CreateEventServlet extends HttpServlet {
@@ -22,14 +23,15 @@ public class CreateEventServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String title = req.getParameter("title");
-        String author = req.getParameter("author");
-        double price =   Double.parseDouble(req.getParameter("price"));
-        int stock =   Integer.parseInt(req.getParameter("stock"));
+        String description = req.getParameter("description");
+        LocalDate date = LocalDate.parse(req.getParameter("date"));
+        String location = req.getParameter("location");
+        int availableSeats =   Integer.parseInt(req.getParameter("available_seats"));
 
-        BookingController bookController = new BookingController();
-        Booking book = new Booking();
-        bookController.saveBook(book);
+        EventController eventController = new EventController();
+        Event event = new Event(title, description, date, location, availableSeats);
+        eventController.saveEvent(event);
 
-        resp.sendRedirect("/BookStore/books");
+        resp.sendRedirect("/admin");
     }
 }

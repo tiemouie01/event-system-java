@@ -20,7 +20,7 @@
 </head>
 <body>
     <h1>Create Event</h1>
-    <form method="post" action="${pageContext.request.contextPath}/admin/book/create">
+    <form method="post" action="${pageContext.request.contextPath}/admin/events/create">
         <label for="title">Title</label>
         <input type="text" id="title" name="title" required>
 

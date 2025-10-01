@@ -13,7 +13,7 @@ public class EventController {
     public EventController() {
     }
 
-    public void saveBook(Event event){
+    public void saveEvent(Event event){
         Transaction tx = null;
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
@@ -25,7 +25,7 @@ public class EventController {
             e.printStackTrace();
         }
     }
-    public Event geBookrById(int id){
+    public Event getEventById(int id){
         Transaction tx = null;
         Event event = null;
         try{
@@ -39,7 +39,7 @@ public class EventController {
         }
         return event;
     }
-    public List<Event> getBooks(){
+    public List<Event> getEvents(){
         List<Event> events = new ArrayList<>();
         Transaction tx = null;
         try{
@@ -54,7 +54,7 @@ public class EventController {
         }
         return events;
     }
-    public void updateBooks(Event event){
+    public void updateEvent(Event event){
         Transaction tx = null;
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
