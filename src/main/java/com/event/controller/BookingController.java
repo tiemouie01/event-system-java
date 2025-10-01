@@ -41,6 +41,24 @@ public class BookingController {
         }
         return booking;
     }
+
+    public List<Booking> getBookingsByEventId(int id){
+        Transaction tx = null;
+        List<Booking> bookings = null;
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            Query<Booking> bookingsQuery = session.createQuery("FROM Booking b WHERE b.event.id = :id");
+            bookingsQuery.setParameter("id", id);
+            bookings = bookingsQuery.getResultList();
+            tx.commit();
+        }catch (Exception e){
+            if(tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return bookings;
+    }
+
     public List<Booking> getBooks(){
         List<Booking> bookings = new ArrayList<>();
         Transaction tx = null;

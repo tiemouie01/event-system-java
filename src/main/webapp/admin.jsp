@@ -51,6 +51,7 @@
                 <th>Location</th>
                 <th>Available Seats</th>
                 <th>Date</th>
+                <th>Bookings</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -66,6 +67,12 @@
                 <td><%= event.getLocation() %></td>
                 <td><%= event.getAvailableSeats() %></td>
                 <td><%= event.getDate() %></td>
+                <td>
+                    <form action="/admin/events/bookings" method="get">
+                        <input type="hidden" name="id" value="<%= event.getId() %>" />
+                        <button type="submit">View Bookings</button>
+                    </form>
+                </td>
                 <td>
                     <form action="/admin/events/edit" method="get">
                         <input type="hidden" name="id" value="<%= event.getId() %>" />
