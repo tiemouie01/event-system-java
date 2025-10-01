@@ -61,7 +61,7 @@
                     <td>MWK<%= String.format("%.2f", book.getPrice()) %></td>
                     <td><%= book.getStock() %></td>
                     <% if (role.equals("ADMIN")) {
-                        out.println("<>")
+                        out.println("<>");
                     }%>
                 </tr>
             <%
