@@ -1,7 +1,7 @@
 package com.event.servlets;
 
-import com.event.controller.BookingController;
-import com.event.model.Booking;
+import com.event.controller.EventController;
+import com.event.model.Event;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/admin")
 public class AdminIndexServlet extends HttpServlet {
@@ -28,6 +29,11 @@ public class AdminIndexServlet extends HttpServlet {
             resp.sendRedirect("/home");
             return;
         }
+
+        EventController eventController = new EventController();
+        List<Event> events = eventController.getEvents();
+        req.setAttribute("events", events);
+
         RequestDispatcher rd = req.getRequestDispatcher("admin.jsp");
         rd.forward(req, resp);
     }
