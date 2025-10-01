@@ -10,7 +10,7 @@
         <property name="hibernate.connection.password">090500</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
-        <mapping class="com.bookstore.bookstore.model.User" />
+        <mapping class="com.event.model.User" />
         <mapping class="com.bookstore.bookstore.model.Book" />
         <mapping class="com.bookstore.bookstore.model.Order" />
     </session-factory>

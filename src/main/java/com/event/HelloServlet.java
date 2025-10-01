@@ -1,4 +1,4 @@
-package com.bookstore.bookstore;
+package com.event;
 
 import java.io.*;
 

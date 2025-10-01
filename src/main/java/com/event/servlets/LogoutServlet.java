@@ -1,4 +1,4 @@
-package com.bookstore.bookstore.servlets;
+package com.event.servlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

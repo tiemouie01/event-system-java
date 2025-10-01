@@ -1,4 +1,4 @@
-package com.bookstore.bookstore.util;
+package com.event.util;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;

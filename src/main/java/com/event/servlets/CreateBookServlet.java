@@ -1,6 +1,6 @@
-package com.bookstore.bookstore.servlets;
+package com.event.servlets;
 
-import com.bookstore.bookstore.controller.BookingController;
+import com.event.controller.BookingController;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,18 +10,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/admin/book/*/edit")
-public class EditBookServlet extends HttpServlet {
+@WebServlet("/admin/book/create")
+public class CreateBookServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String pathInfo = req.getPathInfo();
-        Long id = Long.valueOf(pathInfo.substring(1));
-        BookingController bookController = new BookingController();
-        Book book = bookController.geBookById(id.intValue());
-
-        req.setAttribute("book", book);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("editBook.jsp");
-        requestDispatcher.forward(req,resp);
+        RequestDispatcher rd = req.getRequestDispatcher("createBook.jsp");
+        rd.forward(req, resp);
     }
 
     @Override
@@ -33,7 +27,7 @@ public class EditBookServlet extends HttpServlet {
 
         BookingController bookController = new BookingController();
         Book book = new Book(title,author,price,stock);
-        bookController.updateBooks(book);
+        bookController.saveBook(book);
 
         resp.sendRedirect("/BookStore/books");
     }

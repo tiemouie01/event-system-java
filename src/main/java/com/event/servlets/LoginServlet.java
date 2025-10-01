@@ -1,8 +1,7 @@
-package com.bookstore.bookstore.servlets;
+package com.event.servlets;
 
-import com.bookstore.bookstore.controller.UserController;
-import com.bookstore.bookstore.model.User;
-import com.bookstore.bookstore.util.HibernateUtil;
+import com.event.controller.UserController;
+import com.event.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

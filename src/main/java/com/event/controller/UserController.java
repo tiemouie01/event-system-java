@@ -1,65 +1,84 @@
-package com.bookstore.bookstore.controller;
+package com.event.controller;
 
-import com.bookstore.bookstore.model.Event;
-import com.bookstore.bookstore.util.HibernateUtil;
+import com.event.model.User;
+import com.event.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventController {
-    public EventController() {
+public class UserController {
+    public UserController() {
+    }
+    public void saveUser(User user){
+        Transaction tx = null;
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            session.persist(user);
+            tx.commit();
+        }catch (Exception e){
+            if(tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+    }
+    public User getUserById(int id){
+        Transaction tx = null;
+        User user = null;
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            user = session.find(User.class,id);
+            tx.commit();
+        }catch (Exception e){
+            if(tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return user;
     }
 
-    public void saveBook(Event event){
+    public User getUserByUsername(String username){
         Transaction tx = null;
+        User user = null;
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            session.persist(event);
+            String hql = "FROM User u WHERE u.username = :username";
+            user = session.createQuery(hql, User.class)
+                    .setParameter("username", username)
+                    .uniqueResult();
             tx.commit();
         }catch (Exception e){
             if(tx != null) tx.rollback();
             e.printStackTrace();
         }
+        return user;
     }
-    public Event geBookrById(int id){
+
+    public List<User> getUsers(){
+        List<User> users = new ArrayList<>();
         Transaction tx = null;
-        Event event = null;
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            event = session.find(Event.class,id);
+            Query<User> productQuery = session.createQuery("FROM User",User.class);
+            users = productQuery.getResultList();
             tx.commit();
         }catch (Exception e){
             if(tx != null) tx.rollback();
             e.printStackTrace();
         }
-        return event;
+        return users;
     }
-    public List<Event> getBooks(){
-        List<Event> events = new ArrayList<>();
+    public void updateUser(User user){
         Transaction tx = null;
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            Query<Event> productQuery = session.createQuery("FROM Event",Event.class);
-            events = productQuery.getResultList();
-            tx.commit();
-        }catch (Exception e){
-            if(tx != null) tx.rollback();
-            e.printStackTrace();
-        }
-        return events;
-    }
-    public void updateBooks(Event event){
-        Transaction tx = null;
-        try{
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            tx = session.beginTransaction();
-            session.merge(event);
+            session.merge(user);
             tx.commit();
         }catch (Exception e){
             if(tx != null) tx.rollback();

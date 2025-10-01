@@ -1,6 +1,6 @@
-package com.bookstore.bookstore.servlets;
+package com.event.servlets;
 
-import com.bookstore.bookstore.controller.BookingController;
+import com.event.controller.BookingController;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

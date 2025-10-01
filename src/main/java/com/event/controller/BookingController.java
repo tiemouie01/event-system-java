@@ -1,7 +1,7 @@
-package com.bookstore.bookstore.controller;
+package com.event.controller;
 
-import com.bookstore.bookstore.model.Booking;
-import com.bookstore.bookstore.util.HibernateUtil;
+import com.event.model.Booking;
+import com.event.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
