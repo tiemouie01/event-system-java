@@ -11,11 +11,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/admin/book/create")
-public class CreateBookServlet extends HttpServlet {
+@WebServlet("/admin/events/create")
+public class CreateEventServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("createBook.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/create-event.jsp");
         rd.forward(req, resp);
     }
 

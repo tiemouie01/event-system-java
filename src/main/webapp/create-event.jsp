@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Create Book</title>
+    <title>Create Event</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 24px; }
         h1 { font-size: 20px; margin-bottom: 16px; }
@@ -19,19 +19,22 @@
     </style>
 </head>
 <body>
-    <h1>Create Book</h1>
+    <h1>Create Event</h1>
     <form method="post" action="${pageContext.request.contextPath}/admin/book/create">
         <label for="title">Title</label>
         <input type="text" id="title" name="title" required>
 
-        <label for="author">Author</label>
-        <input type="text" id="author" name="author" required>
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" required>
 
-        <label for="price">Price</label>
-        <input type="number" id="price" name="price" step="0.01" min="0" required>
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date"  required>
 
-        <label for="stock">Stock</label>
-        <input type="number" id="stock" name="stock" min="0" required>
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" required>
+
+        <label for="available_seats">Available Seats</label>
+        <input type="number" id="available_seats" name="available_seats" required>
 
         <button type="submit">Save</button>
     </form>
