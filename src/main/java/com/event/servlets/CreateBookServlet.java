@@ -1,6 +1,7 @@
 package com.event.servlets;
 
 import com.event.controller.BookingController;
+import com.event.model.Booking;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -26,7 +27,7 @@ public class CreateBookServlet extends HttpServlet {
         int stock =   Integer.parseInt(req.getParameter("stock"));
 
         BookingController bookController = new BookingController();
-        Book book = new Book(title,author,price,stock);
+        Booking book = new Booking();
         bookController.saveBook(book);
 
         resp.sendRedirect("/BookStore/books");

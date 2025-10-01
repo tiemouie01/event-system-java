@@ -1,6 +1,7 @@
 package com.event.servlets;
 
 import com.event.controller.BookingController;
+import com.event.model.Booking;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,7 +17,7 @@ public class ListBooksServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BookingController bookController = new BookingController();
-        List<Book> books = bookController.getBooks();
+        List<Booking> books = bookController.getBooks();
 
         req.setAttribute("books", books);
         RequestDispatcher dispatcher =  req.getRequestDispatcher("listBooks.jsp");

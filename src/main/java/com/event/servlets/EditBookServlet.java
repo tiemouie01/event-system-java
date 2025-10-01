@@ -1,6 +1,7 @@
 package com.event.servlets;
 
 import com.event.controller.BookingController;
+import com.event.model.Booking;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,7 +18,7 @@ public class EditBookServlet extends HttpServlet {
         String pathInfo = req.getPathInfo();
         Long id = Long.valueOf(pathInfo.substring(1));
         BookingController bookController = new BookingController();
-        Book book = bookController.geBookById(id.intValue());
+        Booking book = bookController.geBookById(id.intValue());
 
         req.setAttribute("book", book);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("editBook.jsp");
@@ -32,7 +33,7 @@ public class EditBookServlet extends HttpServlet {
         int stock =   Integer.parseInt(req.getParameter("stock"));
 
         BookingController bookController = new BookingController();
-        Book book = new Book(title,author,price,stock);
+        Booking book = new Booking();
         bookController.updateBooks(book);
 
         resp.sendRedirect("/BookStore/books");
