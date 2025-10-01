@@ -54,6 +54,24 @@ public class EventController {
         }
         return events;
     }
+
+    public List<Event> getEventsByName(String name){
+        List<Event> events = new ArrayList<>();
+        Transaction tx = null;
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            Query<Event> eventQuery = session.createQuery("FROM Event WHERE title LIKE :name",Event.class);
+            eventQuery.setParameter("name","%" + name + "%");
+            events = eventQuery.getResultList();
+            tx.commit();
+        }catch (Exception e){
+            if(tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return events;
+    }
+
     public void updateEvent(Event event){
         Transaction tx = null;
         try{

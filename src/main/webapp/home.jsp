@@ -22,6 +22,13 @@
     <a class="btn" href="${pageContext.request.contextPath}/index.jsp">Back to Home</a>
     <a class="btn" href="${pageContext.request.contextPath}/logout">Logout</a>
 
+    <div style="margin-top: 1.5rem;">
+        <form action="/search" method="POST">
+            <input type="text" id="query" name="query" placeholder="Search by event name" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
     <div class="jumbotron">
         <h1>Available Events</h1>
 
