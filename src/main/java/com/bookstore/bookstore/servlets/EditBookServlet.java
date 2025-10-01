@@ -1,9 +1,6 @@
 package com.bookstore.bookstore.servlets;
 
-import com.bookstore.bookstore.controller.BookController;
-import com.bookstore.bookstore.controller.UserController;
-import com.bookstore.bookstore.model.Book;
-import com.sun.net.httpserver.Request;
+import com.bookstore.bookstore.controller.BookingController;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,7 +16,7 @@ public class EditBookServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pathInfo = req.getPathInfo();
         Long id = Long.valueOf(pathInfo.substring(1));
-        BookController bookController = new BookController();
+        BookingController bookController = new BookingController();
         Book book = bookController.geBookById(id.intValue());
 
         req.setAttribute("book", book);
@@ -34,7 +31,7 @@ public class EditBookServlet extends HttpServlet {
         double price =   Double.parseDouble(req.getParameter("price"));
         int stock =   Integer.parseInt(req.getParameter("stock"));
 
-        BookController bookController = new BookController();
+        BookingController bookController = new BookingController();
         Book book = new Book(title,author,price,stock);
         bookController.updateBooks(book);
 

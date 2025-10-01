@@ -17,7 +17,7 @@ public class User {
 
     @OneToMany
     @JoinColumn(name="user_id")
-    private List<Order> orders;
+    private List<Booking> bookings;
 
     public User() {
     }

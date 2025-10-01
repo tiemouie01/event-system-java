@@ -1,65 +1,67 @@
 package com.bookstore.bookstore.controller;
 
-import com.bookstore.bookstore.model.Order;
+import com.bookstore.bookstore.model.Booking;
 import com.bookstore.bookstore.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderController {
-    public OrderController() {
+
+public class BookingController {
+    public BookingController() {
     }
 
-    public void saveBook(Order order){
+    public void saveBook(Booking booking){
         Transaction tx = null;
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            session.persist(order);
+            session.persist(booking);
             tx.commit();
         }catch (Exception e){
             if(tx != null) tx.rollback();
             e.printStackTrace();
         }
     }
-    public Order geBookrById(int id){
+    public Booking geBookById(int id){
         Transaction tx = null;
-        Order order = null;
+        Booking booking = null;
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            order = session.find(Order.class,id);
+            booking = session.find(Booking.class,id);
             tx.commit();
         }catch (Exception e){
             if(tx != null) tx.rollback();
             e.printStackTrace();
         }
-        return order;
+        return booking;
     }
-    public List<Order> getBooks(){
-        List<Order> orders = new ArrayList<>();
+    public List<Booking> getBooks(){
+        List<Booking> bookings = new ArrayList<>();
         Transaction tx = null;
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            Query<Order> productQuery = session.createQuery("FROM Order",Order.class);
-            orders = productQuery.getResultList();
+            Query<Booking> productQuery = session.createQuery("FROM Booking",Booking.class);
+            bookings = productQuery.getResultList();
             tx.commit();
         }catch (Exception e){
             if(tx != null) tx.rollback();
             e.printStackTrace();
         }
-        return orders;
+        return bookings;
     }
-    public void updateBooks(Order order){
+    public void updateBooks(Booking booking){
         Transaction tx = null;
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            session.merge(order);
+            session.merge(booking);
             tx.commit();
         }catch (Exception e){
             if(tx != null) tx.rollback();

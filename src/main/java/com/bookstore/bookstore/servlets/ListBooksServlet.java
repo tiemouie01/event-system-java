@@ -1,7 +1,6 @@
 package com.bookstore.bookstore.servlets;
 
-import com.bookstore.bookstore.controller.BookController;
-import com.bookstore.bookstore.model.Book;
+import com.bookstore.bookstore.controller.BookingController;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,7 +15,7 @@ import java.util.List;
 public class ListBooksServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        BookController bookController = new BookController();
+        BookingController bookController = new BookingController();
         List<Book> books = bookController.getBooks();
 
         req.setAttribute("books", books);

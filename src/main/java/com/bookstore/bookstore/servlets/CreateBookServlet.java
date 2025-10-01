@@ -1,7 +1,6 @@
 package com.bookstore.bookstore.servlets;
 
-import com.bookstore.bookstore.controller.BookController;
-import com.bookstore.bookstore.model.Book;
+import com.bookstore.bookstore.controller.BookingController;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -26,7 +25,7 @@ public class CreateBookServlet extends HttpServlet {
         double price =   Double.parseDouble(req.getParameter("price"));
         int stock =   Integer.parseInt(req.getParameter("stock"));
 
-        BookController bookController = new BookController();
+        BookingController bookController = new BookingController();
         Book book = new Book(title,author,price,stock);
         bookController.saveBook(book);
 
