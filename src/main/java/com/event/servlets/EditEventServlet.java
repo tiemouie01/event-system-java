@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 @WebServlet("/admin/events/edit")
-public class EditBookServlet extends HttpServlet {
+public class EditEventServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id =  Integer.parseInt(req.getParameter("id"));

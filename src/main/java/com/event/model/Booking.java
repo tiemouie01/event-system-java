@@ -3,6 +3,7 @@ package com.event.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "bookings")
@@ -17,7 +18,22 @@ public class Booking {
     @Column(name="number_of_tickets")
     private int numberOfTickets;
 
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name="event_id")
+    private Event event;
+
     public Booking() {
+    }
+
+    public Booking(LocalDate bookingDate, int numberOfTickets, User user, Event event) {
+        this.bookingDate = bookingDate;
+        this.numberOfTickets = numberOfTickets;
+        this.user = user;
+        this.event = event;
     }
 
     public Booking(LocalDate bookingDate, int numberOfTickets) {

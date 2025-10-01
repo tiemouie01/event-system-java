@@ -15,7 +15,7 @@ public class BookingController {
     public BookingController() {
     }
 
-    public void saveBook(Booking booking){
+    public void saveBooking(Booking booking){
         Transaction tx = null;
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();

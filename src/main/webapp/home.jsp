@@ -50,6 +50,7 @@
                 <th>Location</th>
                 <th>Available Seats</th>
                 <th>Date</th>
+                <th>Book</th>
             </tr>
             </thead>
             <tbody>
@@ -63,6 +64,13 @@
                 <td><%= event.getLocation() %></td>
                 <td><%= event.getAvailableSeats() %></td>
                 <td><%= event.getDate() %></td>
+                <td>
+                    <form action="/events/book" method="GET">
+                        <input type="hidden" name="eventId" value="<%= event.getId() %>">
+                        <button type="submit">Book</button>
+                    </form>
+                </td>
+
             </tr>
             <%
                 }
@@ -73,7 +81,7 @@
             }
         %>
     </div>
-    </div>
+</div>
 </body>
 </html>
 

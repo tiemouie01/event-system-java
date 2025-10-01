@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.event.model.Event" %><%--
   Created by IntelliJ IDEA.
   User: timothymiamba
   Date: 9/10/25
@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Edit Book</title>
+    <title>Create Event</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 24px; }
         h1 { font-size: 20px; margin-bottom: 16px; }
@@ -19,20 +19,15 @@
     </style>
 </head>
 <body>
-<h1>Edit Book</h1>
-<form method="post" action="${pageContext.request.requestURI}">
-    <input type="hidden" name="id" value="${book.id}">
-    <label for="title">Title</label>
-    <input type="text" id="title" name="title" value="${book.title}" required>
+<h1>Create Booking</h1>
+<form method="post" action="${pageContext.request.contextPath}/events/book">
+    <%
+        Event event = (Event) request.getAttribute("event");
+    %>
+    <input type="hidden" name="eventId" value="<%= event.getId() %>">
 
-    <label for="author">Author</label>
-    <input type="text" id="author" name="author" value="${book.author}" required>
-
-    <label for="price">Price</label>
-    <input type="number" id="price" name="price" step="0.01" min="0" value="${book.price}" required>
-
-    <label for="stock">Stock</label>
-    <input type="number" id="stock" name="stock" min="0" value="${book.stock}" required>
+    <label for="number_of_tickets">Number of Tickets</label>
+    <input type="number" id="number_of_tickets" name="number_of_tickets" required>
 
     <button type="submit">Save</button>
 </form>
